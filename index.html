@@ -18,6 +18,59 @@
             --text-color: #5d4037;
         }
 
+        /* Papel Picado */
+        .papel-picado-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .banderilla {
+            width: 50px;
+            height: 70px;
+            background-color: var(--primary-pink);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 85%, 0% 100%);
+            opacity: 0.9;
+            animation: sway 3s ease-in-out infinite alternate;
+            transform-origin: top center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            color: rgba(255,255,255,0.5);
+            border: 1px dashed rgba(255,255,255,0.3);
+        }
+
+        .banderilla:nth-child(even) {
+            background-color: var(--soft-gold);
+            animation-delay: -1.5s;
+        }
+
+        .banderilla:nth-child(3n) {
+            background-color: #fce4ec;
+        }
+
+        @keyframes sway {
+            from { transform: rotate(-5deg); }
+            to { transform: rotate(5deg); }
+        }
+
+        /* Patrón Talavera sutil */
+        .main-container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 0 L100 50 L50 100 L0 50 Z" fill="none" stroke="%23f8bbd0" stroke-width="0.5" opacity="0.2"/></svg>');
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -111,6 +164,19 @@
             border-radius: 20px;
             backdrop-filter: blur(5px);
             width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('primera.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
         }
 
         .subtitle {
@@ -125,9 +191,16 @@
             font-family: 'Pacifico', cursive;
             font-size: clamp(2.5rem, 10vw, 4rem);
             margin: 10px 0;
-            color: var(--accent-pink);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            background: linear-gradient(to right, #b8860b 20%, #d4af37 40%, #f1d592 50%, #d4af37 60%, #b8860b 80%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
             line-height: 1.2;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
         }
 
         .tagline {
@@ -139,11 +212,243 @@
 
         .hero-image {
             width: 80%;
-            max-width: 200px;
+            max-width: 220px;
+            border-radius: 110px 110px 15px 15px; /* Efecto Arco */
+            margin-top: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border: 5px solid white;
+            transition: transform 0.5s ease;
+        }
+
+        /* Tarjeta de Imagen Completa (segunda.jpg) */
+        .feature-image-card {
+            margin: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid var(--soft-pink);
+            transform: rotate(-1deg);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-image-card:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .feature-image {
+            width: 100%;
+            height: auto;
             border-radius: 15px;
-            margin-top: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            border: 3px solid white;
+            display: block;
+        }
+
+        /* Dijes Fotográficos Flotantes */
+        .photo-charm {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.5;
+            animation: charm-float 12s ease-in-out infinite alternate;
+        }
+
+        .charm-1 { top: 25%; right: -20px; animation-delay: -2s; }
+        .charm-2 { top: 55%; left: -20px; animation-delay: -5s; }
+        .charm-3 { bottom: 10%; right: -10px; animation-delay: -8s; }
+
+        .charm-inner {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 4px solid var(--soft-gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        /* Adorno de cinta/moño para el dije */
+        .charm-inner::after {
+            content: "🎀";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+        }
+
+        @keyframes charm-float {
+            0% { transform: translate(0, 0) rotate(-10deg); }
+            100% { transform: translate(-15px, 30px) rotate(10deg); }
+        }
+
+        /* Sello de Agua Discreto (cuarta.jpg.webp) */
+        .corner-accent {
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background-image: url('cuarta.jpg.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 0;
+            filter: grayscale(30%) sepia(20%);
+            border: 1px solid var(--soft-gold);
+            pointer-events: none;
+        }
+
+        /* Mini Polaroids Decorativas */
+        .mini-photo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            background: white;
+            padding: 8px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+        }
+
+        .mini-photo:nth-child(even) {
+            transform: rotate(3deg);
+        }
+
+        .mini-photo:hover {
+            transform: rotate(0deg) scale(1.1);
+        }
+
+        .mini-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* Sección Decorativa de Lujo (cuarta.jpg.webp) */
+        .lux-divider-img {
+            width: 100%;
+            height: 250px;
+            margin: 20px 0;
+            background-image: url('cuarta.jpg.webp');
+            background-size: cover;
+            background-position: center;
+            border-top: 2px solid var(--soft-gold);
+            border-bottom: 2px solid var(--soft-gold);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .lux-divider-img::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, transparent 15%, transparent 85%, rgba(255,255,255,0.8) 100%);
+        }
+
+        /* Decoración Mexicana con primera.jpg */
+        .mexican-medallion {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: rotate-float 15s linear infinite;
+        }
+
+        .medallion-1 { top: 10%; left: -40px; }
+        .medallion-2 { bottom: 15%; right: -40px; animation-delay: -5s; }
+
+        /* Decoración Mexicana con segunda.jpg (Recorte circular) */
+        .mexican-accent {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.7;
+            animation: sway-float 10s ease-in-out infinite alternate;
+        }
+
+        .accent-1 { top: 35%; right: -30px; }
+        .accent-2 { bottom: 5%; left: -30px; animation-delay: -3s; }
+
+        .accent-inner {
+            width: 100%;
+            height: 100%;
+            background-image: url('segunda.jpg');
+            background-size: 80%; /* Zoom para centrar el motivo y ocultar bordes */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: white;
+            border-radius: 50%;
+            border: 5px solid var(--soft-gold);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        @keyframes sway-float {
+            from { transform: translate(0, 0) rotate(-5deg); }
+            to { transform: translate(10px, 20px) rotate(5deg); }
+        }
+
+        .medallion-inner {
+            width: 100%;
+            height: 100%;
+            background-image: url('primera.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 8px double var(--soft-gold);
+            box-shadow: 0 0 15px rgba(212,175,55,0.4);
+            position: relative;
+        }
+
+        /* Pétalos de sol mexicano alrededor del medallón */
+        .medallion-inner::before {
+            content: "";
+            position: absolute;
+            top: -15px; left: -15px; right: -15px; bottom: -15px;
+            border: 4px dotted var(--primary-pink);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes rotate-float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Sparkles de lujo */
+        .sparkle-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .sparkle {
+            position: absolute;
+            background: #fff;
+            width: 3px; height: 3px;
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 0 0 10px 2px rgba(212,175,55,0.8);
+        }
+
+        @keyframes sparkleAnim {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(0); opacity: 0; }
         }
 
         /* Decoración Floral */
@@ -272,6 +577,25 @@
             border: 1px solid var(--soft-pink);
             transition: transform 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .info-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('quinta.jpg.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .info-card:hover::before {
+            opacity: 0.2;
         }
 
         .info-card:hover {
@@ -370,6 +694,9 @@
 </head>
 <body>
 
+    <!-- Sparkle Container -->
+    <div class="sparkle-container" id="sparkles"></div>
+
     <!-- Pantalla de Entrada -->
     <div class="entry-overlay" id="entryOverlay">
         <div class="overlay-content">
@@ -383,6 +710,25 @@
     <audio id="bgMusic" src="cancionbautizo.mp3" loop></audio>
 
     <div class="main-container">
+        <!-- Medallones Mexicanos (Flotantes) -->
+        <div class="mexican-medallion medallion-1">
+            <div class="medallion-inner"></div>
+        </div>
+        <div class="mexican-medallion medallion-2">
+            <div class="medallion-inner"></div>
+        </div>
+
+        <!-- Dijes Fotográficos Decorativos -->
+        <div class="photo-charm charm-1">
+            <div class="charm-inner" style="background-image: url('tercera.jpg');"></div>
+        </div>
+        <div class="photo-charm charm-2">
+            <div class="charm-inner" style="background-image: url('cuarta.jpg.webp');"></div>
+        </div>
+        <div class="photo-charm charm-3">
+            <div class="charm-inner" style="background-image: url('quinta.jpg.webp');"></div>
+        </div>
+
         <!-- Flores de Fondo (Improvisación Floral) -->
         <div class="bg-flower flower-1">🌺</div>
         <div class="bg-flower flower-2">🏵️</div>
@@ -438,6 +784,9 @@
             </div>
 
             <div class="info-card">
+                <div class="mini-photo">
+                    <img src="segunda.jpg" alt="Alanna">
+                </div>
                 <span class="icon-symbol">⛪</span>
                 <h3>Misa</h3>
                 <p>Templo Santiago Apóstol</p>
@@ -446,6 +795,9 @@
             </div>
 
             <div class="info-card">
+                <div class="mini-photo">
+                    <img src="segunda.jpg" alt="Alanna">
+                </div>
                 <span class="icon-symbol">🥂</span>
                 <h3>Recepción</h3>
                 <p>Salón de Eventos</p>
@@ -454,6 +806,9 @@
             </div>
 
             <div class="info-card" style="border: 2px dashed var(--primary-pink); background-color: #fff9fb;">
+                <div class="mini-photo">
+                    <img src="segunda.jpg" alt="Alanna">
+                </div>
                 <span class="icon-symbol">🎁</span>
                 <h3>Regalos</h3>
                 <p>Tu presencia es nuestro mejor regalo, pero si gustas, el día del evento tendremos <strong>lluvia de sobres</strong>. ✉️</p>
@@ -472,6 +827,9 @@
                 Diseñado por: Invitaciones Kiki 🌸
             </a>
         </footer>
+
+        <!-- Sello de Agua Discreto (cuarta.jpg.webp) -->
+        <div class="corner-accent"></div>
     </div>
 
     <script>
@@ -482,10 +840,31 @@
         entryOverlay.addEventListener('click', () => {
             entryOverlay.classList.add('hidden');
             startPetals();
+            startSparkles();
             bgMusic.play().catch(error => {
                 console.log("Error al reproducir audio:", error);
             });
         });
+
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            sparkle.style.left = x + 'vw';
+            sparkle.style.top = y + 'vh';
+            sparkle.style.animation = `sparkleAnim ${Math.random() * 2 + 1}s ease-in-out forwards`;
+            
+            document.getElementById('sparkles').appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+
+        function startSparkles() {
+            setInterval(createSparkle, 200);
+        }
 
         function createPetal() {
             const petal = document.createElement('div');
