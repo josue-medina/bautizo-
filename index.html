@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación - Alanna Valentina</title>
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Pacifico&family=Great+Vibes&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #f8bbd0;
+            --soft-pink: #fce4ec;
+            --accent-pink: #ff4d6d;
+            --soft-gold: #d4af37;
+            --dark-gold: #b8860b;
+            --sand: #fffaf0;
+            --white: #ffffff;
+            --text-color: #5d4037;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--sand);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, var(--soft-pink) 0%, #ffffff 100%);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        /* Entry Overlay Styles */
+        .entry-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--sand);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        .entry-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .overlay-content {
+            text-align: center;
+            color: var(--dark-gold);
+        }
+
+        .pulsing-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: heartBeat 2s infinite;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            10% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+
+        .overlay-content p {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            /* Fondo con flores sutiles */
+            background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), 
+                        url('https://images.unsplash.com/photo-1522673607200-1648482ce486?auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-color);
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--dark-gold);
+        }
+
+        .main-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.5rem;
+            margin: 10px 0;
+            color: var(--accent-pink);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .tagline {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--dark-gold);
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 3px solid white;
+        }
+
+        /* Decoración Floral */
+        .floral-corner {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .flower-top-right {
+            top: -10px;
+            right: -10px;
+            transform: rotate(15deg);
+            font-size: 100px;
+        }
+
+        .flower-bottom-left {
+            bottom: -10px;
+            left: -10px;
+            transform: rotate(-15deg);
+            font-size: 100px;
+        }
+
+        /* Flores flotantes de fondo */
+        .bg-flower {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(10px, -15px) rotate(10deg); }
+            66% { transform: translate(-10px, 15px) rotate(-10deg); }
+        }
+
+        .flower-1 { top: 15%; left: 5%; font-size: 120px; animation-delay: 0s; }
+        .flower-2 { top: 40%; right: 2%; font-size: 150px; animation-delay: -2s; }
+        .flower-3 { top: 65%; left: -5%; font-size: 130px; animation-delay: -4s; }
+        .flower-4 { bottom: 20%; right: 5%; font-size: 110px; animation-delay: -6s; }
+
+        /* Separador Floral */
+        .floral-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            color: var(--primary-pink);
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        /* Animación de pétalos */
+        .petal {
+            position: fixed;
+            top: -10%;
+            color: var(--primary-pink);
+            font-size: 20px;
+            user-select: none;
+            z-index: 9998;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            padding: 2rem 1rem;
+            text-align: center;
+            background-color: var(--white);
+            margin: -30px 20px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 3;
+            border: 1px solid var(--primary-pink);
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5rem;
+        }
+
+        .time-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .time-block span {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent-pink);
+        }
+
+        .time-block small {
+            font-size: 0.7rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+        }
+
+        /* Details Section */
+        .details {
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--soft-pink);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-symbol {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .info-card h3 {
+            color: var(--dark-gold);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .map-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 1.2rem;
+            background-color: var(--soft-gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background 0.3s;
+            font-size: 0.85rem;
+        }
+
+        .map-button:hover {
+            background-color: var(--dark-gold);
+        }
+
+        /* RSVP Section */
+        .rsvp {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .rsvp-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .footer-note {
+            text-align: center;
+            font-style: italic;
+            padding: 1rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            .main-title { font-size: 2.8rem; }
+            .hero { height: 45vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla de Entrada -->
+    <div class="entry-overlay" id="entryOverlay">
+        <div class="overlay-content">
+            <div class="pulsing-icon">🌸</div>
+            <p>Alanna Valentina</p>
+            <small>Toca para abrir invitación</small>
+        </div>
+    </div>
+
+    <!-- Audio de Fondo -->
+    <audio id="bgMusic" src="cancion2.mp3" loop></audio>
+
+    <div class="main-container">
+        <!-- Flores de Fondo (Improvisación Floral) -->
+        <div class="bg-flower flower-1">🌺</div>
+        <div class="bg-flower flower-2">🏵️</div>
+        <div class="bg-flower flower-3">🌷</div>
+        <div class="bg-flower flower-4">🌸</div>
+
+        <!-- Flores Decorativas en las esquinas -->
+        <div class="floral-corner flower-top-right">🌸</div>
+        <div class="floral-corner flower-bottom-left">🌸</div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <p class="subtitle">Mi Bautizo y 1er Año</p>
+                <h1 class="main-title">Alanna Valentina</h1>
+                <p class="tagline">¡Acompáñanos a celebrar!</p>
+                <img src="imagen.avif" alt="Alanna Valentina" class="hero-image">
+                
+                <div class="floral-divider">🌸 ✻ 🌸 ✻ 🌸</div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section class="countdown-section">
+            <div class="floral-divider" style="margin:0 0 10px 0">🍃 ❀ 🍃</div>
+            <h3>Falta muy poco...</h3>
+            <div class="countdown-timer" id="timer">
+                <div class="time-block">
+                    <span id="days">00</span>
+                    <small>Días</small>
+                </div>
+                <div class="time-block">
+                    <span id="hours">00</span>
+                    <small>Horas</small>
+                </div>
+                <div class="time-block">
+                    <span id="minutes">00</span>
+                    <small>Min</small>
+                </div>
+                <div class="time-block">
+                    <span id="seconds">00</span>
+                    <small>Seg</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Details Section -->
+        <section class="details">
+            <div class="info-card">
+                <span class="icon-symbol">📅</span>
+                <h3>Fecha</h3>
+                <p>Sábado, 8 de Agosto de 2026</p>
+            </div>
+
+            <div class="info-card">
+                <span class="icon-symbol">⛪</span>
+                <h3>Misa</h3>
+                <p>Templo Santiago Apóstol</p>
+                <p>1:30 PM</p>
+                <a href="https://www.google.com/maps/place/Parroquia+Santiago+Apóstol,+Av+Morelos+Nte+1771,+Santiaguito,+58110+Morelia,+Mich./data=!4m2!3m1!1s0x842d0e41f87a71fb:0x269215877eb87a4f!18m1!1e1" target="_blank" class="map-button">Ver ubicación 📍</a>
+            </div>
+
+            <div class="info-card">
+                <span class="icon-symbol">🥂</span>
+                <h3>Recepción</h3>
+                <p>Salón de Eventos</p>
+                <p>4:00 PM</p>
+                <a href="https://maps.app.goo.gl/byMFJr31ingbcr2W6" target="_blank" class="map-button">Ir al salón 📍</a>
+            </div>
+
+            <div class="info-card" style="border: 2px dashed var(--primary-pink); background-color: #fff9fb;">
+                <span class="icon-symbol">🎁</span>
+                <h3>Regalos</h3>
+                <p>Tu presencia es nuestro mejor regalo, pero si gustas, el día del evento tendremos <strong>lluvia de sobres</strong>. ✉️</p>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section class="rsvp">
+            <a href="https://wa.me/524434047288?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20fiesta%20de%20Alanna" target="_blank" class="rsvp-button">
+                ✅ Confirmar Asistencia
+            </a>
+        </section>
+    </div>
+
+    <script>
+        // Lógica para ocultar el overlay, activar pétalos y música
+        const entryOverlay = document.getElementById('entryOverlay');
+        const bgMusic = document.getElementById('bgMusic');
+
+        entryOverlay.addEventListener('click', () => {
+            entryOverlay.classList.add('hidden');
+            startPetals();
+            bgMusic.play().catch(error => {
+                console.log("Error al reproducir audio:", error);
+            });
+        });
+
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            petal.innerHTML = '🌸';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 3 + 2 + 's';
+            petal.style.opacity = Math.random();
+            petal.style.fontSize = Math.random() * 15 + 10 + 'px';
+            
+            document.body.appendChild(petal);
+
+            setTimeout(() => {
+                petal.remove();
+            }, 5000);
+        }
+
+        function startPetals() {
+            setInterval(createPetal, 300);
+        }
+
+        // Cuenta regresiva
+        const eventDate = new Date("August 8, 2026 13:30:00").getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }, 1000);
+    </script>
+</body>
+</html>
