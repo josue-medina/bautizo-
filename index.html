@@ -89,7 +89,8 @@
 
         /* Hero Section */
         .hero {
-            height: 50vh;
+            min-height: 40vh;
+            padding: 40px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -105,14 +106,15 @@
 
         .hero-content {
             z-index: 2;
-            padding: 20px;
+            padding: 15px;
             background: rgba(255, 255, 255, 0.7);
             border-radius: 20px;
             backdrop-filter: blur(5px);
+            width: 100%;
         }
 
         .subtitle {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -121,23 +123,24 @@
 
         .main-title {
             font-family: 'Pacifico', cursive;
-            font-size: 3.5rem;
-            margin: 10px 0;
+            font-size: 2.8rem;
+            margin: 5px 0;
             color: var(--accent-pink);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .tagline {
             font-family: 'Great Vibes', cursive;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--dark-gold);
+            margin-bottom: 10px;
         }
 
         .hero-image {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 20px;
-            margin-top: 20px;
+            width: 80%;
+            max-width: 200px;
+            border-radius: 15px;
+            margin-top: 10px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             border: 3px solid white;
         }
